@@ -11,7 +11,7 @@
 /**
  * App ID for the skill
  */
-var APP_ID = undefined; // put application ID here
+var APP_ID = "amzn1.echo-sdk-ams.app.d387b6dc-3372-41c3-aaad-aced3a751ca3"; // put application ID here
 
 // Skill icon from: http://www.freepik.com
 
