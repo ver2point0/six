@@ -16,9 +16,9 @@ GetStoryIntent give me some stories
 GetStoryIntent give me some six word stories
 GetStoryIntent tell me something
 GetStoryIntent give me something
-GetStoryIntent hear a story
-GetStoryIntent hear stories
-GetStoryIntent hear some stories
-GetStoryIntent hear six word stories
-GetStoryIntent hear some six word stories
-GetStoryIntent hear six words
+GetStoryIntent play a story
+GetStoryIntent play stories
+GetStoryIntent play some stories
+GetStoryIntent play six word stories
+GetStoryIntent play some six word stories
+GetStoryIntent play six words
