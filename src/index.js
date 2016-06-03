@@ -97,41 +97,41 @@ var AlexaSkill = require('./AlexaSkill');
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
  */
-var Six = function () {
+var TheSixes = function () {
     AlexaSkill.call(this, APP_ID);
 };
 
 // Extend AlexaSkill
-Six.prototype = Object.create(AlexaSkill.prototype);
-Six.prototype.constructor = Six;
+TheSixes.prototype = Object.create(AlexaSkill.prototype);
+TheSixes.prototype.constructor = TheSixes;
 
-Six.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
-    console.log("Six onSessionStarted requestId: " + sessionStartedRequest.requestId
+TheSixes.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
+    console.log("The Sixes onSessionStarted requestId: " + sessionStartedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any initialization logic goes here
 };
 
-Six.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    console.log("Six onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
+TheSixes.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
+    console.log("TheSixes onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
     handleNewFactRequest(response);
 };
 
 /**
  * Overridden to show that a subclass can override this function to teardown session state.
  */
-Six.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
-    console.log("Six onSessionEnded requestId: " + sessionEndedRequest.requestId
+TheSixes.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
+    console.log("The Sixes onSessionEnded requestId: " + sessionEndedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any cleanup logic goes here
 };
 
-Six.prototype.intentHandlers = {
+TheSixes.prototype.intentHandlers = {
     "GetStoryIntent": function (intent, session, response) {
         handleNewFactRequest(response);
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
-        response.ask("You can ask Six tell me a story, or, you can say exit... What can I help you with?", "What can I help you with?");
+        response.ask("You can ask The Sixes tell me a story, or, you can say exit... What can I help you with?", "What can I help you with?");
     },
 
     "AMAZON.StopIntent": function (intent, session, response) {
@@ -156,12 +156,12 @@ function handleNewFactRequest(response) {
     // Create speech output
     var speechOutput = "Here's your story: " + story;
 
-    response.tellWithCard(speechOutput, "Six", speechOutput);
+    response.tellWithCard(speechOutput, "The Sixes", speechOutput);
 }
 
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
     // Create an instance of the Six skill.
-    var six = new Six();
-    six.execute(event, context);
+    var theSixes = new TheSixes();
+    theSixes.execute(event, context);
 };
