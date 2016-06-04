@@ -19,7 +19,7 @@ var APP_ID = "amzn1.echo-sdk-ams.app.d387b6dc-3372-41c3-aaad-aced3a751ca3"; // p
  * Array containing stories of six words.
  */
  
-var THE_SIXES = [
+var SHORT_TALES = [
     "Lit cigarette. Fell asleep. Burning alive.",
     "Texting while driving. Awoke in hospital.",
     "Goodbye, mission control. Thanks for trying.",
@@ -97,41 +97,41 @@ var AlexaSkill = require('./AlexaSkill');
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
  */
-var TheSixes = function () {
+var ShortTales = function () {
     AlexaSkill.call(this, APP_ID);
 };
 
 // Extend AlexaSkill
-TheSixes.prototype = Object.create(AlexaSkill.prototype);
-TheSixes.prototype.constructor = TheSixes;
+ShortTales.prototype = Object.create(AlexaSkill.prototype);
+ShortTales.prototype.constructor = ShortTales;
 
-TheSixes.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
-    console.log("The Sixes onSessionStarted requestId: " + sessionStartedRequest.requestId
+ShortTales.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
+    console.log("Short Tales onSessionStarted requestId: " + sessionStartedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any initialization logic goes here
 };
 
-TheSixes.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    console.log("TheSixes onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
+ShortTales.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
+    console.log("Short Tales onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
     handleNewFactRequest(response);
 };
 
 /**
  * Overridden to show that a subclass can override this function to teardown session state.
  */
-TheSixes.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
-    console.log("The Sixes onSessionEnded requestId: " + sessionEndedRequest.requestId
+ShortTales.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
+    console.log("Short Tales onSessionEnded requestId: " + sessionEndedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any cleanup logic goes here
 };
 
-TheSixes.prototype.intentHandlers = {
+ShortTales.prototype.intentHandlers = {
     "GetStoryIntent": function (intent, session, response) {
         handleNewFactRequest(response);
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
-        response.ask("You can ask The Sixes tell me a story, or, you can say exit... What can I help you with?", "What can I help you with?");
+        response.ask("You can ask Short Tales tell me a story, or, you can say exit... What can I help you with?", "What can I help you with?");
     },
 
     "AMAZON.StopIntent": function (intent, session, response) {
@@ -150,18 +150,18 @@ TheSixes.prototype.intentHandlers = {
  */
 function handleNewFactRequest(response) {
     // Get a random story from the story list
-    var storyIndex = Math.floor(Math.random() * THE_SIXES.length);
-    var story = THE_SIXES[storyIndex];
+    var storyIndex = Math.floor(Math.random() * SHORT_TALES.length);
+    var story = SHORT_TALES[storyIndex];
 
     // Create speech output
     var speechOutput = "Here's your story: " + story;
 
-    response.tellWithCard(speechOutput, "The Sixes", speechOutput);
+    response.tellWithCard(speechOutput, "Short Tales", speechOutput);
 }
 
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {
-    // Create an instance of the Six skill.
-    var theSixes = new TheSixes();
-    theSixes.execute(event, context);
+    // Create an instance of the Short Tales skill.
+    var shortTales = new ShortTales();
+    shortTales.execute(event, context);
 };
